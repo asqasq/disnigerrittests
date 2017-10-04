@@ -4,25 +4,25 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class BasicTest {
 	int value;
-	@Before
+	@BeforeEach
 	public void init() {
 		value = 3;
 	}
-	@After
+	@AfterEach
 	public void destroy() {
 	}
 	
 
 	@Test
 	public void testGetBuffer() {
-		Assert.assertEquals(value, 3);
+		assertEquals(value, 3);
 	}
 
 }
