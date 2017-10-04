@@ -27,7 +27,6 @@ import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Map;
 
 import com.ibm.disni.rdma.RdmaEndpoint;
 import com.ibm.disni.rdma.RdmaEndpointFactory;
@@ -71,9 +70,7 @@ public class SendRecvClient implements RdmaEndpointFactory<SendRecvClient.SendRe
 	private void run() throws Exception {
 		System.out.println("SendRecvClient, size " + size + ", loop " + loop + ", recvQueueSize " + recvQueueSize + ", port " + port);
 		
-		Map<String, String> env = System.getenv();
-		String buildID = env.get("BUILD_NUMBER");
-		File f = new File("./ready" + buildID);
+		File f = new File("./.ready");
 		while (!f.exists()) {
 			Thread.sleep(1000);
 		}

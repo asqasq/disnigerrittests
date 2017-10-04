@@ -27,7 +27,6 @@ import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Map;
 
 import com.ibm.disni.rdma.RdmaEndpoint;
 import com.ibm.disni.rdma.RdmaEndpointFactory;
@@ -76,9 +75,7 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		URI uri = URI.create("rdma://" + host + ":" + 1919);
 		serverEndpoint.bind(uri);
 
-		Map<String, String> env = System.getenv();
-		String buildID = env.get("BUILD_NUMBER");
-		File f = new File("./ready" + buildID);
+		File f = new File("./.ready");
 		if (!f.exists()) {
 			f.createNewFile();
 		}
