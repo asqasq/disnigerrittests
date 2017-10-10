@@ -73,6 +73,7 @@ public class SendRecvClient implements RdmaEndpointFactory<SendRecvClient.SendRe
 		
 		Map<String, String> env = System.getenv();
 		String path = env.get("HOME") + "/tmp/.ready_" + env.get("JOB_NAME") + "_"  + env.get("BUILD_NUMBER"); 
+		System.out.println("Client: Check file " + path);
 		File f = new File(path);
 		while (!f.exists()) {
 			Thread.sleep(1000);
