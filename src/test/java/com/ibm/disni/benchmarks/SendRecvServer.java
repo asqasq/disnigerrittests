@@ -145,6 +145,7 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		
 		SendRecvServer server = new SendRecvServer(ipAddress, size, loop, recvQueueSize, port);
 		server.run();
+		System.out.println("Server is done now. main() returns now.");
 	}
 	
 	public static class SendRecvEndpoint extends RdmaEndpoint {
