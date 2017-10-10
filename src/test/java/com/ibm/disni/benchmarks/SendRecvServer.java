@@ -77,7 +77,8 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		serverEndpoint.bind(uri);
 
 		Map<String, String> env = System.getenv();
-		String path = env.get("HOME") + "/tmp/.ready_" + env.get("JOB_NAME") + "_"  + env.get("BUILD_NUMBER"); 
+		String path = env.get("HOME") + "/tmp/.ready_" + env.get("JOB_NAME") + "_"  + env.get("BUILD_NUMBER");
+		System.out.println("Server: Create file " + path);
 		File f = new File(path);
 		if (!f.exists()) {
 			f.createNewFile();
