@@ -21,11 +21,13 @@
 
 package com.ibm.disni.benchmarks;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Map;
 
 import com.ibm.disni.rdma.RdmaEndpoint;
 import com.ibm.disni.rdma.RdmaEndpointFactory;
@@ -73,6 +75,15 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		RdmaServerEndpoint<SendRecvServer.SendRecvEndpoint> serverEndpoint = group.createServerEndpoint();
 		URI uri = URI.create("rdma://" + host + ":" + 1919);
 		serverEndpoint.bind(uri);
+
+		Map<String, String> env = System.getenv();
+		String path = env.get("HOME") + "/tmp/.ready_" + env.get("JOB_NAME") + "_"  + env.get("BUILD_NUMBER");
+		System.out.println("Server: Create file " + path);
+		File f = new File(path);
+		if (!f.exists()) {
+			f.createNewFile();
+		}
+		
 		SendRecvServer.SendRecvEndpoint endpoint = serverEndpoint.accept();
 		System.out.println("SendRecvServer, client connected, address " + uri.toString());	
 		
