@@ -97,15 +97,20 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 //			System.out.println("actualSends = " + actualRecvs);
 			opCount += actualSends;
 //			System.out.println("opCount " + opCount);
+			System.out.println("loop " + opCount);
 		}
 		
+		System.out.println("Loop done.\n");
 		endpoint.awaitRecvs();
 		endpoint.awaitSends();
-		
+
+		System.out.println("Close now.\n");
+
 		//close everything
 		endpoint.close();
 		serverEndpoint.close();
 		group.close();		
+		System.out.println("Closed.\n");
 	}
 	
 	
