@@ -102,7 +102,9 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		
 		System.out.println("Loop done.\n");
 		endpoint.awaitRecvs();
+		System.out.println("awaitReceives(); done");
 		endpoint.awaitSends();
+		System.out.println("awaitSends(); done");
 
 		System.out.println("Close now.\n");
 
@@ -242,6 +244,7 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		}	
 		
 		private void awaitRecvs() throws IOException {
+			System.out.println("recvPending " + recvPending);
 			while (recvPending > 0) {
 				int res = poll.execute().getPolls();
 				if (res > 0){
@@ -260,6 +263,7 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		}
 		
 		private void awaitSends() throws IOException {
+			System.out.println("sendPending " + sendPending);
 			while (sendPending > 0) {
 				int res = poll.execute().getPolls();
 				if (res > 0){
