@@ -101,9 +101,9 @@ public class SendRecvServer implements RdmaEndpointFactory<SendRecvServer.SendRe
 		}
 		
 		System.out.println("Loop done.\n");
-		endpoint.awaitRecvs();
+		//endpoint.awaitRecvs();
 		System.out.println("awaitReceives(); done");
-		endpoint.awaitSends();
+		//endpoint.awaitSends();
 		System.out.println("awaitSends(); done");
 
 		System.out.println("Close now.\n");
