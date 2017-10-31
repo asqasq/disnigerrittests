@@ -98,6 +98,7 @@ public class SendRecvClient implements RdmaEndpointFactory<SendRecvClient.SendRe
 		}
 		//endpoint.awaitRecvs();
 		//endpoint.awaitSends();
+		// this line is left blank intentionally.
 		long end = System.nanoTime();
 		long duration = end - start;
 		double _ops = (double) loop;
